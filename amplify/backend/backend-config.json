@@ -1,9 +1,19 @@
 {
   "auth": {
-    "myprojectdatastore": {
+    "starProject": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "starProjectPostConfirmation",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
       "customAuth": false,
       "frontendAuthConfig": {
         "loginMechanisms": [],
@@ -25,7 +35,7 @@
     }
   },
   "api": {
-    "myprojectdatastore": {
+    "starProject": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -44,12 +54,19 @@
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
-                "userPoolId": "authmyprojectdatastore"
+                "userPoolId": "authstarProject"
               }
             }
           ]
         }
       }
+    }
+  },
+  "function": {
+    "starProjectPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   }
 }

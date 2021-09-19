@@ -10,6 +10,7 @@ import { BellIcon, ChevronDoubleLeftIcon, InboxIcon, LightBulbIcon, MailIcon, Mo
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "./forms/Menu";
 import blankpic from "../images/blankpic.png";
+import { Auth } from "aws-amplify";
 function NewFile() {
     const [display, setdisplay] = useState(false)
     const [word,setWord] =useState ("")
@@ -40,6 +41,10 @@ const back =()=>{
             setddd(false)
           
            
+    }
+
+    const signOut = async()=>{
+      await Auth.signOut()
     }
   useDarkMode();
   return (
@@ -116,7 +121,8 @@ const back =()=>{
 }
      { !state ?   <Link className="link hidden md:inline-flex" to="/signin">
           <button className=" btnNav">Log In</button>
-        </Link> : <button className=" btnNav hidden md:inline-flex"onClick={()=>{dispatch({type:"LOGOUT"})}}>Sign Out</button> }
+        {/* </Link> : <button className=" btnNav hidden md:inline-flex"onClick={()=>{dispatch({type:"LOGOUT"})}}>Sign Out</button> } */}
+        </Link> : <button className=" btnNav hidden md:inline-flex"onClick={signOut}>Sign Out</button> }
 
         { !state && <Link className="link hidden md:inline-flex" to="/signup">
           <button className=" btnNav" >Sign Up</button>

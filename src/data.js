@@ -20,6 +20,15 @@ export const data = [
 ];
 
 
+// const ediT = async ()=>{
+//   // id = ""
+//   const updateMe = await DataStore.query(Users,"6878cd54-228b-4fcc-9f5c-2a53b23cb88a")
+//   const fff = await DataStore.save(Users.copyOf( updateMe,item => {
+//     item.name="deji"
+//   }));
+//   console.log("updated",fff)
+// }
+
  export const friends = [
   {
       name:"sara",

@@ -4,11 +4,11 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type ChatRoomMetaData = {
+type MessageMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type MessageMetaData = {
+type ChatRoomMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
@@ -20,27 +20,27 @@ type UserMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class ChatRoom {
-  readonly id: string;
-  readonly newMessage?: string;
-  readonly Messages?: (Message | null)[];
-  readonly LastMessage?: Message;
-  readonly ChatRoomUsers?: (ChatRoomUser | null)[];
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<ChatRoom, ChatRoomMetaData>);
-  static copyOf(source: ChatRoom, mutator: (draft: MutableModel<ChatRoom, ChatRoomMetaData>) => MutableModel<ChatRoom, ChatRoomMetaData> | void): ChatRoom;
-}
-
 export declare class Message {
   readonly id: string;
-  readonly content?: string;
+  readonly content: string;
   readonly userID?: string;
   readonly chatroomID?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Message, MessageMetaData>);
   static copyOf(source: Message, mutator: (draft: MutableModel<Message, MessageMetaData>) => MutableModel<Message, MessageMetaData> | void): Message;
+}
+
+export declare class ChatRoom {
+  readonly id: string;
+  readonly newMessage?: number;
+  readonly LastMessage?: Message;
+  readonly Messages?: (Message | null)[];
+  readonly ChatRoomUsers?: (ChatRoomUser | null)[];
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<ChatRoom, ChatRoomMetaData>);
+  static copyOf(source: ChatRoom, mutator: (draft: MutableModel<ChatRoom, ChatRoomMetaData>) => MutableModel<ChatRoom, ChatRoomMetaData> | void): ChatRoom;
 }
 
 export declare class ChatRoomUser {
@@ -55,9 +55,9 @@ export declare class ChatRoomUser {
 
 export declare class User {
   readonly id: string;
-  readonly pix?: string;
   readonly name: string;
-  readonly status?: string;
+  readonly pix?: string;
+  readonly statu?: string;
   readonly Messages?: (Message | null)[];
   readonly chatrooms?: (ChatRoomUser | null)[];
   readonly createdAt?: string;

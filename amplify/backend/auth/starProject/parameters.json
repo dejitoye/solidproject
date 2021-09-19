@@ -1,8 +1,8 @@
 {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "myprojb761c6e8",
-    "userPoolName": "myprojectdatastore",
+    "resourceNameTruncated": "starpre4896d68",
+    "userPoolName": "starProject",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -25,10 +25,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "myprojb761c6e8_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "starPre4896d68_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "b761c6e8",
-    "resourceName": "myprojectdatastore",
+    "sharedId": "e4896d68",
+    "resourceName": "starProject",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -53,5 +53,23 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "dependsOn": []
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "starProjectPostConfirmation",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ],
+    "triggers": "{\n  \"PostConfirmation\": [\n    \"custom\"\n  ]\n}",
+    "hostedUI": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"starProjectPostConfirmation\"\n  }\n]",
+    "breakCircularDependency": true,
+    "permissions": []
 }

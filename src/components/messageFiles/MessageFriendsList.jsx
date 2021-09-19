@@ -4,6 +4,9 @@ import SearchUtil from 'utils/SearchUtil'
 import IndividualMeassageFriend from './IndividualMeassageFriend'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { DataStore } from 'aws-amplify'
+import { ChatRoom } from 'models'
+import { ChatRoomUser } from 'models'
 // import { API, Auth, graphqlOperation } from 'aws-amplify'
 // import { listUsers } from 'graphql/queries'
 // import { getUserMe } from 'graphqlhooks/myqueries'
@@ -15,11 +18,14 @@ function MessageFriendsList() {
     const [loading, setloading] = useState(false)
     const [friendss, setfriendss] = useState([])
 
-
-// console.log(object)
-// const zone = friendsz.map((fri)=> (fri.chatRoom.chatRoomUsers.items.map(goog=>console.log(goog))))
-// const zone = friendsz.map((fri)=> (fri.chatRoom.chatRoomUsers.items[0]))
-// console.log(zone)
+    useEffect(() => {
+        listChatRoom()
+    }, [])
+    
+    const listChatRoom= async()=>{
+        const model = await DataStore.query(ChatRoomUser)
+        console.log(model)
+    }
     return (
         <div className=" flex justify-center items-center p-4">
             <div className="flex flex-col w-full">

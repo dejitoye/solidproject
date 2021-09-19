@@ -17,10 +17,11 @@ import SearchPostPage from "pages/SearchPostPage";
 import NotFound from "pages/NotFound";
 import MessagesPage from "pages/MessagesPage";
 import ScreenSizePage from "pages/ScreenSizePage";
-import Amplify from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { useEffect } from "react";
+import IndividualMainChat from "pages/main/IndividualMainChat";
 
 Amplify.configure(awsconfig);
 
@@ -35,7 +36,8 @@ const randomImages=[
 function App() {
   const modal = useSelector(state => state.utils.inputmodal)
   console.log(modal)
- 
+  Auth.currentAuthenticatedUser().then(console.log)
+
   return (
     <Router>
       <div className="bg-gray-100  font-body">
@@ -55,6 +57,7 @@ function App() {
           <Route path="/search" component={SearchPostPage} />
           <Route path="/messages" component={MessagesPage} />
           <Route path="/screensize" component={ScreenSizePage} />
+          <Route path="/message/:id" component={IndividualMainChat} />
           <Route  component={NotFound} />
           
         </Switch>

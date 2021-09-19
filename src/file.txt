@@ -1,0 +1,58 @@
+Things to do 
+
+do d drop down for sharing, reporting and sending to friends in the post details 
+
+topic shouldnt be more than 120 words 
+not found page 
+
+need to do logic for the profile page when user click back it can take them back 
+correct the links in the left side,it shld be clickable and linkable even if u hit the icons 
+
+
+
+
+To Take Note off
+gave the write post Z-10
+gave PostPage,ProfilePage z-20
+in the profile put a link to the tabs so the web would change to ie profile/all or pprofile/post etc to make it more interesting
+
+able to search for personal post in their bio 
+
+
+https://randomuser.me/portraits/women/29.jpg
+
+
+const data = [
+    {
+        name:sara,
+        pix: https://randomuser.me/portraits/women/29.jpg
+    },
+      {
+        name:joy,
+        pix: https://randomuser.me/portraits/women/28.jpg
+    },
+      {
+        name:sadia,
+        pix: https://randomuser.me/portraits/women/23.jpg
+    },
+      {
+        name:deji,
+        pix: https://randomuser.me/portraits/men/29.jpg
+    },
+     {
+        name:deji,
+        pix: https://randomuser.me/portraits/men/29.jpg
+    },
+     {
+        name:deji,
+        pix: https://randomuser.me/portraits/men/29.jpg
+    },
+     {
+        name:deji,
+        pix: https://randomuser.me/portraits/men/29.jpg
+    },
+     {
+        name:deji,
+        pix: https://randomuser.me/portraits/men/29.jpg
+    },
+]

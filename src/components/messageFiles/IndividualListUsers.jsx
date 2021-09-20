@@ -1,6 +1,7 @@
 // import { API, Auth, graphqlOperation } from 'aws-amplify'
 // import { createChatRoom, createChatRoomUser } from 'graphql/mutations'
-import { Auth, DataStore } from 'aws-amplify'
+import { API, Auth, DataStore, graphqlOperation } from 'aws-amplify'
+import { getUserMe, listUsers } from 'graphqlhooks/myqueries'
 import { ChatRoomUser } from 'models'
 import { User } from 'models'
 import { ChatRoom } from 'models'
@@ -14,19 +15,63 @@ function IndividualListUsers({listFriendArray}) {
     const history = useHistory()
     const [id, setdId] = useState("")
     const [deet, setdeet] = useState("")
+    const [loading, setloading] = useState(false)
     const dispatch = useDispatch()
-// console.log(id)
+console.log("userslist to check",listFriendArray)
     useEffect(() => {
         // listUsers()
 userId()
+listChatRoom()
     }, [])
+
+
+//     const listChatRoom= async()=>{
+//         setloading(true)
+//         const user =await Auth.currentAuthenticatedUser()
+// const id=user.attributes.sub
+//         const model = await DataStore.query(ChatRoomUser)
+//         setdeet(model)
+//         const checkTrue = model.filter((m)=>{
+//             console.log("first",m)
+
+//         //   let pop= m.user.id===id 
+//         //   return pop  
+//         })
+//         // console.log("question",checkTrue)
+//         console.log("mapping",model)
+//         console.log("mapping2",checkTrue)
+//        setloading(false)
+//     }
+
+const listChatRoom= async()=>{
+    setloading(true)
+    const user =await Auth.currentAuthenticatedUser()
+const id=user.attributes.sub
+    const model = (await DataStore.query(ChatRoomUser)).filter(p=>p.user.id===id)
+
+    // const ddd = await API.graphql(graphqlOperation(listUsers))
+    // console.log(ddd)
+    // const checkTrue = model.filter((m)=>{
+    //     console.log("first",m)
+
+    // //   let pop= m.user.id===id 
+    // //   return pop  
+    // })
+    // console.log("question",checkTrue)
+    console.log("mapping",model)
+    // console.log("mapping2",checkTrue)
+   setloading(false)
+}
+
+
     const userId = async()=>{
 const user =await Auth.currentAuthenticatedUser()
 setdId(user.attributes.sub)
     }
 const createChatRoom =async()=>{
+    const num = 0
    const newChatRoom = await DataStore.save(
-       new ChatRoom({newMessage:0})
+       new ChatRoom({newMessage:num})
    ) 
    console.log("chatrooom was added",newChatRoom)
 const getUserdb= await DataStore.query(User,id)

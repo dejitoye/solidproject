@@ -56,3 +56,13 @@ const data = [
         pix: https://randomuser.me/portraits/men/29.jpg
     },
 ]
+
+
+   useEffect(() => {
+        // listUsers()
+userId()
+    }, [])
+    const userId = async()=>{
+const user =await Auth.currentAuthenticatedUser()
+setdId(user.attributes.sub)
+    }

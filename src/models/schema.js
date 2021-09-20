@@ -14,18 +14,18 @@ export const schema = {
                     "name": "content",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "userID": {
-                    "name": "userID",
-                    "isArray": false,
-                    "type": "ID",
                     "isRequired": false,
                     "attributes": []
                 },
                 "chatroomID": {
                     "name": "chatroomID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "userID": {
+                    "name": "userID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -58,18 +58,18 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byUser",
+                        "name": "byChatRoom",
                         "fields": [
-                            "userID"
+                            "chatroomID"
                         ]
                     }
                 },
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byChatRoom",
+                        "name": "byUser",
                         "fields": [
-                            "chatroomID"
+                            "userID"
                         ]
                     }
                 },
@@ -314,18 +314,18 @@ export const schema = {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
-                "pix": {
-                    "name": "pix",
+                "status": {
+                    "name": "status",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "statu": {
-                    "name": "statu",
+                "pix": {
+                    "name": "pix",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -404,5 +404,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "f7ada8ec96759f56423296a7241cee39"
+    "version": "f299c79e11d667f527d250f2fafbb485"
 };
